@@ -24,25 +24,17 @@ The following variables are passed as arguments to Asphyxia and will override an
 - **ASPHYXIA_DEV_MODE** - Enable dev mode (buggy?) ("--dev")
 - **ASPHYXIA_PING_IP** - Override ping IP address at runtime ("-pa")
 - **ASPHYXIA_SAVEDATA_DIR** - Override savedata directory at runtime ("-d")
-- **ASPHYXIA_PLUGIN_REPLACE** - Setting this will cause it to ONLY use the custom plugins provided from the mounted plugins directory.
 
 ## Mount Point ##
-The local mount point for overrides within the container is /usr/local/share/custom.  If you wish to store additional plugins, config and savedata outside of the container you should specify a volume such as:
+The local mount point for overrides within the container is /usr/local/share/asphyxia. Define the volume and save any plugins to the plugins folder of that volume.
 ```
 volumes:
-      - "./asphyxia:/usr/local/share/custom"
+      - "./asphyxia:/usr/local/share/asphyxia"
 ```
 
 You can replace "./asphyxia" with any directory on your machine that contains your config.ini/plugins/savedata directories.
 
-## Config Override ##
 Place a Asphyxia config.ini file in the directory you have mounted to /usr/local/share/custom
-
-## Plugin Override ##
-Place a plugin directory in the directory you have mounted to /usr/local/share/custom.  By default the image contains the 0.5 release version of the [official plugins](https://github.com/asphyxia-core/plugins).  Any plugins that get mounted into /usr/local/share/custom will be copied (and override) the community plugins within the image.  If ASPHYXIA_PLUGIN_REPLACE is defined, then the community plugins will not be included and it will rely on the plugins provided in custom.
-
-## Savedata Override ##
-Place your savedata directory in the directory you have mounted to /usr/local/share/custom
 
 ## Notes ##
 Always ensure you open up both the listening port and the matching port (if you intend to do any matching) or you will not be able to access the web GIU or utilize Asphyxia in general.
