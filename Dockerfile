@@ -2,7 +2,7 @@ FROM alpine:latest
 LABEL maintainer=Telain
 ENV ASPHYXIA_VERSION=1.50
 WORKDIR /usr/local/share
-COPY bootstrap.sh .
+COPY --chmod +x bootstrap.sh .
 RUN apk add gcompat libgcc libstdc++ &&\
     wget https://github.com/asphyxia-core/asphyxia-core.github.io/releases/download/v${ASPHYXIA_VERSION}/asphyxia-core-linux-x64.zip &&\
     mkdir -p ./asphyxia &&\
