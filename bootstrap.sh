@@ -9,5 +9,6 @@ SAVE_DIR="-d /usr/local/share/asphyxia/savedata"
 [ ! -z "${ASPHYXIA_PING_IP}" ] && PING_IP="--ping-addr ${ASPHYXIA_PING_IP}" || PING_IP=""
 [ ! -z "${ASPHYXIA_SAVEDATA_DIR}" ] && SAVEDATA_DIR="--savedata-dir ${ASPHYXIA_SAVEDATA_DIR}" || SAVEDATA_DIR=""
 
+chdir /usr/local/share/asphyxia
 echo "RUNNING: /usr/local/share/asphyxia/asphyxia-core ${SAVE_DIR} ${LISTENING_PORT} ${BINDING_PORT} ${MATCHING_PORT} ${DEV_MODE} ${PING_IP} ${SAVEDATA_DIR}"
 /usr/local/share/asphyxia/asphyxia-core ${SAVE_DIR} ${LISTENING_PORT} ${BINDING_PORT} ${MATCHING_PORT} ${DEV_MODE} ${PING_IP} ${SAVEDATA_DIR}
